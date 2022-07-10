@@ -14,6 +14,7 @@ const find_cycle_start = (head) => {
     fast = fast.next.next;
     slow = slow.next;
     if (slow === fast) {
+      console.log(fast.value)
       length = calculateLength(slow);
       break;
     }

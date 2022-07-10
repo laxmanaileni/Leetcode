@@ -1,33 +1,50 @@
 //Method 1
+// const noRepeatingSubString = (String) => {
+//   let map = {};
+//   let start = 0,
+//     maxLen = 0;
+//   for (let i = 0; i < String.length; i++) {
+
+//     if(!map[String[i]]){
+//         map[String[i]] =0;
+//     }
+//     map[String[i]] += 1;
+
+//     while (Object.keys(map).length < i - start + 1) {
+//       map[String[start]] -= 1;
+//       if (map[String[start]] === 0) {
+//         delete map[String[start]];
+//       }
+//       start += 1;
+//     }
+
+//     maxLen = Math.max(maxLen, i - start + 1);
+//   }
+//   return maxLen;
+// };
+//Practice
 const noRepeatingSubString = (String) => {
-  let map = {};
   let start = 0,
+    map = {},
     maxLen = 0;
   for (let i = 0; i < String.length; i++) {
-
-    if(!map[String[i]]){
-        map[String[i]] =0;
-    }
-    map[String[i]] += 1;
-
-    
+    if (map[String[i]] === undefined) map[String[i]] = 0;
+    map[String[i]]++;
     while (Object.keys(map).length < i - start + 1) {
-      map[String[start]] -= 1;
-      if (map[String[start]] === 0) {
-        delete map[String[start]];
-      }
+      map[String[start]]--;
+      if (map[String[start]] === 0) delete map[String[start]];
       start += 1;
     }
-   
-    maxLen = Math.max(maxLen, i - start + 1);
+    maxLen = Math.max(i - start + 1, maxLen);
   }
   return maxLen;
 };
-console.log(noRepeatingSubString("abccde"));
-console.log(noRepeatingSubString("abbbb"));
-console.log(noRepeatingSubString("aabccbb"));
-console.log(noRepeatingSubString("dvdf"));
-// //Method 2
+
+console.log(noRepeatingSubString("abccde")); //3
+console.log(noRepeatingSubString("abbbb")); //2
+console.log(noRepeatingSubString("aabccbb")); //3
+console.log(noRepeatingSubString("dvdf")); //3
+//* Method 2
 // const noRe = (String) => {
 //   let map = {};
 //   let start = 0,

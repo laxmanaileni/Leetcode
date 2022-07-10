@@ -33,39 +33,36 @@ var Anagram = function (s1, s2) {
 // console.log(Anagram("abc", "cbaebabacd"));
 // console.log(Anagram("ab", "abab"));
 
+//*TODO Tough revise once again
 const Anagrams = (s, p) => {
   let start = 0,
     count = p.length;
-    let result=[]
+  let result = [];
   let map = {};
   for (let i = 0; i < p.length; i++) {
-    if (!map[p[i]]) {
-      map[p[i]] = 1;
-    } else {
-      map[p[i]] = map[p[i]] + 1;
+    if (map[p[i]] === undefined) map[p[i]] = 0;
+    map[p[i]]++;
+  }
+  // console.log(map);
+
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]] > 0) count--;
+    if (!map[s[i]]) {
+      map[s[i]] = 0;
+    }
+    map[s[i]] -= 1;
+
+    if (count === 0) result.push(start);
+    if (i - start + 1 >= p.length) {
+      if (map[s[start]] >= 0) count++;
+      if (!map[s[start]]) {
+        map[s[start]] = 0;
+      }
+      map[s[start]] += 1;
+      start += 1;
     }
   }
-  console.log(map);
-
-  for(let i=0;i<s.length;i++){
-    if(map[s[i]]>0)count--
-  if(!map[s[i]]){
-    map[s[i]]=0
-  }
-    map[s[i]]=map[s[i]]-1
-
-    if(count===0) result.push(start) 
-    if(i-start+1>=p.length){
-        if(map[s[start]]>=0)count++;
-        if( !map[s[start]]){
-            map[s[start]]=0
-        }
-        map[s[start]]+=1
-        start+=1
-    }
-
-  }
-  return result
+  return result;
 };
 
 console.log(Anagrams("cbaebabacd", "abc"));

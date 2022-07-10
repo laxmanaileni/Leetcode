@@ -25,19 +25,22 @@ var threeSumSmaller = function (nums, target) {
   nums = nums.sort((a, b) => a - b);
   let count = 0;
   for (let i = 0; i < nums.length - 2; i++) {
-      let targetSum=target-nums[i]
+    let targetSum = target - nums[i];
     let left = i + 1,
       right = nums.length - 1;
     while (left < right) {
-      if ( nums[left] + nums[right] < targetSum) {
-        count+=right-left;
+      if (nums[left] + nums[right] < targetSum) {
+        count += right - left;
+        console.log(count)
         left++;
-      }else{
-        right--
+      } else {
+        right--;
       }
     }
   }
   return count;
 };
 
-console.log(threeSumSmaller([-2, 0, 1, 3], 2));
+// console.log(threeSumSmaller([-2, 0, 1, 3], 2));
+// console.log(threeSumSmaller([-1, 0, 2, 3], 3));
+console.log(threeSumSmaller([-1, 4, 2, 1, 3], 5));

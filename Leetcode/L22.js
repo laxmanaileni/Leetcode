@@ -1,4 +1,5 @@
 var generateParenthesis = function (n) {
+  //not solved
   let res = [""];
 
   while (res[0].length < n * 2) {

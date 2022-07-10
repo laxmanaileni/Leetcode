@@ -8,9 +8,9 @@ const longest = (String, K) => {
       map[String[i]] = 0;
     }
     map[String[i]] += 1;
-    maxRepeating = Math.max(maxRepeating, map[String[i]]);
-    while (i - start + 1 > K) {
-      map[String[i]] -= 1;
+    maxRepeating = Math.max(maxRepeating, map[String[i]]); // To remove the repeated letters
+    if (i - start + 1 - maxRepeating > K) {
+      map[String[start]] -= 1;
       start += 1;
     }
     maxLen = Math.max(maxLen, i - start + 1);
@@ -19,4 +19,5 @@ const longest = (String, K) => {
 };
 
 console.log(longest("aabccbb", 2));
-
+console.log(longest("abbcb", 1));
+console.log(longest("abccde", 1));
