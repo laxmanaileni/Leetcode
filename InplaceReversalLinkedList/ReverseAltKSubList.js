@@ -1,3 +1,5 @@
+//Reverse the first ‘k’ elements of a given LinkedList
+
 class Node {
   constructor(value, next = null) {
     (this.value = value), (this.next = next);
@@ -42,6 +44,7 @@ const reverse = (head, k) => {
 
     LastNodeOfSubList.next = current; //connect later part to reverse list
 
+    //Going through the next K elements as same
     i = 0;
     while (current !== null && i < k) {
       prev = current;
@@ -52,7 +55,6 @@ const reverse = (head, k) => {
     if (current === null) {
       break;
     }
-    //prev = LastNodeOfSubList;
   }
 
   return head;
@@ -75,5 +77,5 @@ result.print_list();
 
 /***
  * Input 1 2 3 4 5 6 7 8
- * Output 3 2 1 6 5 4 8 7
+ * Output 2 1 3 4 6 5 7 8
  */

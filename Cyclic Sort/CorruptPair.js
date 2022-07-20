@@ -15,6 +15,7 @@ const corruptPair = (nums) => {
       return [nums[i], i + 1];
     }
   }
+  return [-1, -1];
 };
 
 console.log(corruptPair([3, 1, 2, 5, 2]));

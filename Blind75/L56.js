@@ -1,16 +1,18 @@
 var merge = function (intervals) {
-let result=[],start=0,end=1;
-let prev=intervals[0]
-result.push(prev)
-for(let interval of intervals){
-if(interval[start]<=prev[end]){
-prev[end]=Math.max(prev[end],interval[end])
-}else{
-    result.push(interval);
-    prev=interval
-}
-}
-return result
+  let result = [],
+    start = 0,
+    end = 1;
+  let prev = intervals[0];
+  result.push(prev);
+  for (let interval of intervals) {
+    if (interval[start] <= prev[end]) {
+      prev[end] = Math.max(prev[end], interval[end]);
+    } else {
+      result.push(interval);
+      prev = interval;
+    }
+  }
+  return result;
 };
 
 console.log(

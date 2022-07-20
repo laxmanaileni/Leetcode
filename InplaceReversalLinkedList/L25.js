@@ -1,5 +1,3 @@
-
-
 class Node {
   constructor(value, next = null) {
     (this.value = value), (this.next = next);
@@ -14,42 +12,49 @@ class Node {
   }
 }
 
-const reverse = (head, k) => {
-  if (k <= 1 || head === null) {
-    return head;
+var reverseKGroup = function (head, k) {
+  if (k <= 1 && head === null) return head;
+
+  let count = 0,
+    size = head;
+
+  while (size !== null) {
+    count++;
+    size = size.next;
   }
 
   let prev = null,
     current = head;
 
   while (true) {
-    const LastNodeOfFirstPart = prev;
-    const LastNodeOfSubList = current;
-    let i = 0;
-    let next = null;
+    let next = null,
+      i = 0;
+
+    let lastNodePrev = prev;
+    let lastNodeRev = current;
     while (current !== null && i < k) {
-  
       next = current.next;
       current.next = prev;
       prev = current;
       current = next;
       i += 1;
+      count--;
     }
 
-    if (LastNodeOfFirstPart !== null) {
-      // connect the first part to reverse list
-      LastNodeOfFirstPart.next = prev;
+    if (lastNodePrev !== null) {
+      lastNodePrev.next = prev;
     } else {
       head = prev;
     }
 
-    LastNodeOfSubList.next = current; //connect later part to reverse list
-    if (current === null) {
+    lastNodeRev.next = current;
+    if (current === null) break;
+    if (count >= k) {
+      prev = lastNodeRev;
+    } else {
       break;
     }
-    prev = LastNodeOfSubList;
   }
-
   return head;
 };
 
@@ -64,12 +69,11 @@ head.next.next.next.next.next.next.next = new Node(8);
 
 process.stdout.write("Original Linked List ");
 head.print_list();
-result = reverse(head, 3);
+result = reverseKGroup(head, 3);
 process.stdout.write("Reversed Linked List ");
 result.print_list();
 
-
-/***
- * Input 1 2 3 4 5 6 7 8
- * Output 3 2 1 6 5 4 8 7 
- */
+/**
+ * Original Linked List 1 2 3 4 5 6 7 8
+ * Reversed Linked List 3 2 1 6 5 4 7 8
+ *   */

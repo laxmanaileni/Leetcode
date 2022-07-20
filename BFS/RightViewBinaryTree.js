@@ -24,7 +24,7 @@ var levelOrder = function (root) {
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-    result.push(level);
+    result.push(...level);
   }
   return result;
 };

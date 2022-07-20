@@ -11,24 +11,20 @@ var averageOfLevels = function (root,key) {
   }
   let queue = [];
   queue.push(root);
-  let res = [],
-    count = false;
+  let count = false;
   while (queue.length) {
-    let length = queue.length,
-      level = [];
+    let length = queue.length
     for (let i = 0; i < length; i++) {
       let node = queue.shift();
-      if(count){return node.val}
-      level.push(node.val);
+      // if(count){return node.val}
       if (node.val === key) {
         count = true;
+      return queue.shift().val;
       }
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-    res.push(level);
   }
-  //return res;
 };
 
 var root = new TreeNode(1);

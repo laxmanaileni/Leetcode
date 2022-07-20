@@ -38,10 +38,58 @@ console.log(
   )
 );
 */
+/*
+function isPossible(a, b, c, d) {
+  // Write your code here
+  let isPossible = "No";
+  let A, B;
+  // X way
+  let resultX = a + b;
+  let resultY = b;
+  while (resultX <= c) {
+    if (resultX === c && resultY === d) {
+      isPossible = "Yes";
+    } else {
+      A = resultX;
+      resultX = A + b;
+    }
+  }
+  // Y way
+  resultX = A;
+  resultY = A + b;
+  while (resultY <= d) {
+    if (resultX === c && resultY === d) {
+      isPossible = "Yes";
+    } else {
+      B = resultY;
+      resultY = a + B;
+    }
+  }
+  return isPossible;
+}
 
-var fillCups = function (amount) {
+console.log(isPossible(1, 4, 5, 9));
+*/
+//Goldman Sachs
+function isPossible(a, b, c, d, memo = {}) {
+  if (memo[[a, b, c, d]] !== undefined) {
+    return memo[[a, b, c, d]];
+  }
+  if (a === c && b === d) return "Yes";
+  if (a > c || b > d) return "No";
+  memo[(a, b, c, d)] = isPossible(a + b, b, c, d, memo);
+  var result1 = memo[(a, b, c, d)];
+  memo[(a, b, c, d)] = isPossible(a, b + a, c, d, memo);
+  var result2 = memo[(a, b, c, d)];
+  
+  if (result1 === "Yes" || result2 === "Yes") {
+    return "Yes";
+  } else {
+    return "No";
+  }
+}
 
-  fillrecursive(amount[0],amount[1])+fillrecursive(amount[0])
-};
-
-console.log(fillCups([1, 4, 2]));
+console.log(isPossible(1, 4, 5, 9)); // yes
+console.log(isPossible(1, 2, 3, 6)); // no
+console.log(isPossible(1, 4, 5, 9)); // Yes
+console.log(isPossible(1, 4, 5, 9)); // Yes

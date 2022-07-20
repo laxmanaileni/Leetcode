@@ -23,7 +23,6 @@ var reverseLevelOrder = function (root) {
     result.push(level);
   }
      return result.reverse();
-  //return result;
 };
 */
 var reverseLevelOrder = function (root) {

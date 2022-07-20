@@ -5,17 +5,15 @@ class TreeNode {
     this.right = right;
   }
 }
-var averageOfLevels = function (root, key) {
+var averageOfLevels = function (root) {
   if (!root) {
     return;
   }
   let queue = [];
   queue.push(root);
-  let res = [],
-    count = false;
   while (queue.length) {
     let length = queue.length,
-      previous = 0;
+      previous = null;
     for (let i = 0; i < length; i++) {
       let node = queue.shift();
       if (previous != null) {
@@ -26,7 +24,6 @@ var averageOfLevels = function (root, key) {
       if (node.right) queue.push(node.right);
     }
   }
-  //return res;
 };
 
 var root = new TreeNode(1);
@@ -35,4 +32,4 @@ root.right = new TreeNode(3);
 root.left.left = new TreeNode(4);
 root.left.right = new TreeNode(5);
 
-console.log(averageOfLevels(root, 3));
+console.log(averageOfLevels(root));

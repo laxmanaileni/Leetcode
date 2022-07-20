@@ -1,3 +1,11 @@
+class TreeNode {
+    constructor(val, left = null, right = null) {
+      this.val = val;
+      this.left = left;
+      this.right = right;
+    }
+  }
+
 var minDepth = function(root) {
     if(!root) return 0
     let queue=[];
@@ -15,3 +23,11 @@ var minDepth = function(root) {
     }
     return minDepth;
 };
+
+var root = new TreeNode(12);
+root.left = new TreeNode(7);
+root.right = new TreeNode(1);
+root.left.left = new TreeNode(9);
+root.left.right = new TreeNode(10);
+
+console.log(minDepth(root));
