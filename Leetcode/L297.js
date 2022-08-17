@@ -15,7 +15,7 @@ Clarification: The input/output format is the same as how LeetCode serializes a 
  * @param {TreeNode} root
  * @return {string}
  */
-var serialize = function (root) {
+var serialize = function (root) { 
   const data = [];
 
   const go = (node) => {

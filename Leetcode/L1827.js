@@ -15,3 +15,5 @@ var minOperations = function (nums) {
 console.log(minOperations([1, 1, 1]));
 console.log(minOperations([1, 5, 2, 4, 1]));
 console.log(minOperations([8]));
+
+console.log(minOperations([3, 4, 1, 6, 2]));

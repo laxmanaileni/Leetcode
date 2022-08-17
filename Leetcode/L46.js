@@ -14,7 +14,7 @@ var permute = function (nums) {
       for (let k = 0; k < oldPermutation.length + 1; k++) {
         let newPermission = oldPermutation.slice(0); //copy
         newPermission.splice(k, 0, currentNumber);
-        console.log(newPermission);
+        //console.log(newPermission);
         if (newPermission.length === nums.length) {
           result.push(newPermission);
         } else {

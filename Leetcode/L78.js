@@ -1,20 +1,24 @@
+//https://leetcode.com/problems/subsets/
 var subsets = function (nums) {
-  let subSets = [];
-  subSets.push([]);
+  let subSet = [];
+  subSet.push([]);
   for (let i = 0; i < nums.length; i++) {
-    let currentNumber = nums[i];
-    let length = subSets.length;
+    let current = nums[i];
+    let length = subSet.length;
     for (let j = 0; j < length; j++) {
-      let copy = subSets[j].slice(0); //copy subset
-      copy.push(currentNumber);
-      subSets.push(copy);
+      let copy = subSet[j].slice(0); //Copy the existing subset
+      copy.push(current);
+      subSet.push(copy);
     }
   }
-  return subSets;
+  return subSet;
 };
 
 console.log(subsets([1, 2, 3]));
 
 /**
- * [] [1][2]
+ * []
+ * [] [1]
+ * [] [1] [2] [1 2]
+ * [] [1] [2] [1 2] [3] [1 3] [2 3] [1 2 3]
  */
