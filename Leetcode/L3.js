@@ -22,3 +22,4 @@ var lengthOfLongestSubstring = function (s) {//Sliding Window
 console.log(lengthOfLongestSubstring("abcabcbb"));
 console.log(lengthOfLongestSubstring("bbbbb"));
 console.log(lengthOfLongestSubstring("pwwkew"));
+console.log(lengthOfLongestSubstring('aabcccd'));
